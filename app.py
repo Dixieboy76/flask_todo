@@ -22,8 +22,6 @@ app.config["MAIL_USE_TLS"] = True
 app.config["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME")  # ✅ Get from environment variable
 app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")  # ✅ Get from environment variable
 
-# app.config["MAIL_USERNAME"] = "gmedia2121@gmail.com"
-# app.config["MAIL_PASSWORD"] = "Dixieboy2022!"
 
 # Initialize Database
 db = SQLAlchemy(app)
