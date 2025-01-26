@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}My To-Do List{% endblock %}
+
+{% block content %}
+    <div class="card shadow p-4">
+        <h2 class="text-center">My To-Do List</h2>
+
+        <form action="{{ url_for('add_task') }}" method="POST" class="d-flex gap-2 mb-3">
+            <input type="text" name="content" class="form-control" placeholder="Enter a task" required>
+            <input type="date" name="due_date" class="form-control">
+            <select name="priority" class="form-select">
+                <option value="High">🔥 High</option>
+                <option value="Medium" selected>⚡ Medium</option>
+                <option value="Low">🟢 Low</option>
+            </select>
+            <button type="submit" class="btn btn-success">Add Task</button>
+        </form>
+
+        <ul class="list-group">
+            {% for task in tasks %}
+                <li class="list-group-item d-flex justify-content-between align-items-center {% if task.completed %}bg-success text-white{% endif %}">
+                    <div>
+                        <strong>{{ task.content }}</strong> 
+                        <span class="badge bg-warning text-dark">{{ task.priority }}</span>
+                        {% if task.due_date %}
+                            <small class="text-muted">Due: {{ task.due_date.strftime('%Y-%m-%d') }}</small>
+                        {% endif %}
+                    </div>
+                    <div>
+                        {% if not task.completed %}
+                            <a href="{{ url_for('complete_task', task_id=task.id) }}" class="btn btn-sm btn-primary">✅ Complete</a>
+                        {% endif %}
+                        <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn btn-sm btn-danger">❌ Delete</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+
+
+
