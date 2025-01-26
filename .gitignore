@@ -1,5 +1,5 @@
-# 🛑 Ignore virtual environments
-venv/
+# Ignore virtual environments
+.venv/
 .env
 *.pyc
 *.pyo
@@ -8,7 +8,7 @@ instance/
 db.sqlite3
 *.sqlite3
 
-# 🚀 Ignore Logs & Cache
+# Ignore Logs & Cache
 logs/
 *.log
 *.swp
@@ -17,14 +17,14 @@ logs/
 *.bak
 *.tmp
 
-# 📂 Ignore Editor & System-Specific Files
+# Ignore Editor & System-Specific Files
 .vscode/
 .idea/
 *.sublime-workspace
 
-# 🔥 Ignore Compiled Python Bytecode
+# Ignore Compiled Python Bytecode
 *.py[cod]
 
-# ✅ Ignore MacOS/Windows system files
+# Ignore MacOS/Windows system files
 Thumbs.db
 .DS_Store
