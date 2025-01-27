@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container dashboard-container">
+    <h1 class="dashboard-title">Dashboard</h1>
+    <p class="dashboard-welcome">Welcome, <strong>{{ current_user.username }}</strong>!</p>
+
+    <div class="row">
+        <!-- Tasks Summary -->
+        <div class="col-md-6">
+            <h3>Task Overview</h3>
+            <p><strong>Total Tasks:</strong> {{ total_tasks }}</p>
+            <p><strong>Completed:</strong> {{ completed_tasks }}</p>
+            <p><strong>Pending:</strong> {{ pending_tasks }}</p>
+            <p><strong>Completion Rate:</strong> {{ "%.2f"|format(completion_rate) }}%</p>
+        </div>
+
+        <!-- Task List -->
+        <div class="col-md-6">
+            <h3>Your Tasks</h3>
+            <ul class="task-list">
+                {% for task in tasks %}
+                    <li class="task-item {% if task.completed %}completed{% endif %}">
+                        {{ task.content }} - <strong>{{ task.category }}</strong>
+                    </li>
+                {% else %}
+                    <p>No tasks available. <a href="{{ url_for('add_task') }}">Add a new task</a></p>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{{ url_for('add_task') }}" class="btn btn-primary">➕ Add New Task</a>
+    </div>
+</div>
+{% endblock %}
+
+

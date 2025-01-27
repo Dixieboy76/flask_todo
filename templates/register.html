@@ -2,30 +2,34 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-<div class="card p-4 shadow-lg rounded" style="width: 350px;">
-    <h3 class="text-center">📝 Register</h3>
+<div class="d-flex justify-content-center mt-2">
+    <div class="auth-container">
+    <div class="card p-4 shadow-lg rounded" style="width: 350px;">
+        <h3 class="text-center">📝 Register</h3>
 
-    <form action="{{ url_for('register') }}" method="POST">
-        <div class="mb-3">
-            <label for="email" class="form-label">Email:</label>
-            <input type="email" name="email" class="form-control" required>
+        <form action="{{ url_for('register') }}" method="POST">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Sign Up</button>
+        </form>
+
+        <div class="text-center mt-3">
+            <a href="{{ url_for('login') }}">Already have an account? Log in</a>
         </div>
-
-        <div class="mb-3">
-            <label for="username" class="form-label">Username:</label>
-            <input type="text" name="username" class="form-control" required>
         </div>
-
-        <div class="mb-3">
-            <label for="password" class="form-label">Password:</label>
-            <input type="password" name="password" class="form-control" required>
-        </div>
-
-        <button type="submit" class="btn btn-success w-100">Sign Up</button>
-    </form>
-
-    <div class="text-center mt-3">
-        <a href="{{ url_for('login') }}">Already have an account? Log in</a>
     </div>
 </div>
 {% endblock %}

@@ -1,16 +1,46 @@
-/* 🌟 General Styling */
+/* General Styling */
 body {
     background-color: #f4f4f9;  /* Light gray background */
     color: #333;
     font-family: 'Poppins', sans-serif; /* Custom font */
 }
 
-/* 🌟 Center Forms */
+/* Smooth Dark Mode Transition */
+body, .navbar, .container {
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure the entire page fills the screen */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Wrap the content */
+.content-wrapper {
+    flex: 1; /* Pushes the footer down */
+    padding-bottom: 20px; /* Avoid overlap with footer */
+    flex-grow: 1;
+}
+
+/* Make wrapper take up full height */
+.wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Center Forms */
 .card {
     background-color: #ffffff;  /* White background */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
-    padding: 20px;
+    padding: 30px;
+    text-align: center;
+    font-weight: bold;
 }
 
 .container {
@@ -24,13 +54,15 @@ body {
 
 h1 {
     color: #333;
+    text-align: center;
+    font-weight: bold;
 }
 
 form {
     margin-bottom: 20px;
 }
 
-/* 🌟 Center Login Form */
+/* Center Login Form */
 .login-container {
     width: 30%;
     background: white;
@@ -40,7 +72,7 @@ form {
     text-align: center;
 }
 
-/* 🌟 Style Inputs and Buttons */
+/* Style Inputs and Buttons */
 input, button {
     width: 100%; /* Full width */
     padding: 10px;
@@ -54,10 +86,15 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 ul {
@@ -79,37 +116,93 @@ a {
     padding: 5px;
 }
 
-/* 🌟 Navbar Customization */
+/* Navbar Styling */
 .navbar {
     background: linear-gradient(to right, #007bff, #0056b3); /* Blue Gradient */
     padding: 10px;
+    padding: 8px 20px;
 }
 
-/* ✅ Ensure Navbar Text is Always Visible */
+/* Ensure Navbar Text is Always Visible */
 .navbar .navbar-brand,
+.navbar .nav-link,
 .navbar a,
 .navbar .btn-outline-light {
     color: white !important;
     font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Slight shadow for visibility */
 }
 
+/* Space Out Navbar Items */
+.navbar-nav {
+    gap: 15px;
+}
+
+/* Add Icons */
+.navbar .navbar-brand::before {
+    content: "📝";
+    margin-right: 8px;
+}
+
+/* Navbar Buttons */
+.navbar .btn {
+    padding: 8px 16px;
+}
+
+/* Ensure "To-Do App" Stays Yellow in All Modes */
+.navbar .navbar-brand {
+    font-size: 2rem !important;  /* Increase text size */
+    font-weight: bold;
+    color: #ffcc00 !important;  /* Keep yellow */
+}
+
+/* Fix Dark Mode: Prevent Overriding */
+.dark-mode .navbar .navbar-brand {
+    color: #ffcc00 !important;  /* Keep yellow in dark mode */
+}
+
+/* Override Bootstrap or Other Styles */
+.dark-mode .navbar a.navbar-brand {
+    color: #ffcc00 !important;
+}
+
+/* Ensure buttons have white text */
 .navbar .btn-outline-light {
     border-color: white;
 }
 
 .navbar .btn-outline-light:hover {
-    background-color: white;
+    background-color: white !important;
     color: #007bff !important;
 }
 
-/* ✅ Fix Navbar Brand Text */
-.navbar .nav-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white !important;
+/* Improve Input Fields */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+button {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: border 0.3s ease-in-out;
 }
 
-/* 🔘 Button Styling */
+/* Hover & Focus Effects */
+input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Improve Form Alignment */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Button Styling */
 .btn-primary {
     background-color: #007bff;
     border: none;
@@ -128,22 +221,23 @@ a {
     background-color: #218838;
 }
 
-/* 🌓 Dark Mode Styling */
+/* Dark Mode Styling */
 .dark-mode {
     background-color: #121212 !important;
     color: white !important;
 }
 
-/* 🌙 Dark Mode Navbar */
+/* Dark Mode Navbar */
 .dark-mode .navbar {
     background: linear-gradient(to right, #1a1a1a, #333); /* Darker gradient */
     border-bottom: 2px solid #444;
 }
 
 .dark-mode .navbar .navbar-brand,
+.dark-mode .navbar .nav-link,
 .dark-mode .navbar a,
 .dark-mode .navbar .btn-outline-light {
-    color: white !important; /* ✅ Ensures white text in Dark Mode */
+    color: #ffffff !important; /* Ensure visibility */
 }
 
 .dark-mode .navbar .btn-outline-light:hover {
@@ -151,12 +245,15 @@ a {
     color: #121212 !important;
 }
 
-/* ✅ Fix Navbar Text in Dark Mode */
-.dark-mode .nav-text {
-    color: white !important;
+/* Fix Navbar Brand Visibility */
+.dark-mode .navbar-brand {
+    font-size: 2rem !important;
+    font-weight: bold;
+    color: #ffcc00 !important;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2); /* Light shadow for visibility */
 }
 
-/* ✅ Fix Buttons in Dark Mode */
+/* Fix Buttons in Dark Mode */
 .dark-mode .btn-outline-light {
     border: 1px solid #f8f9fa;
     color: #f8f9fa;
@@ -167,7 +264,7 @@ a {
     color: #121212;
 }
 
-/* 🌙 Dark Mode Forms */
+/* Dark Mode Forms */
 .dark-mode .card {
     background-color: #242424;
     color: white;
@@ -175,31 +272,351 @@ a {
     border: 1px solid #333;
 }
 
-/* 🌙 Dark Mode List Items */
+/* Dark Mode List Items */
 .dark-mode li {
     background: #333;
     color: white;
     border: 1px solid #444;
 }
 
-/* 🌙 Dark Mode Flash Messages */
+/* Dark Mode Flash Messages */
 .dark-mode .alert {
     background-color: #222;
     color: #ffcc00; /* Yellowish text */
     border: 1px solid #ffcc00;
 }
 
-/* ⚡ Flash Messages */
-.alert {
-    font-size: 14px;
-    padding: 10px;
-    border-radius: 5px;
+/* Dark Mode Toggle Button */
+.toggle-dark-mode {
+    border: 2px solid white;
+    padding: 8px 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-/* 📱 Responsive Design */
+/* Hover Effect */
+.toggle-dark-mode:hover {
+    background: white;
+    color: black;
+}
+
+
+/* Flash Messages */
+.alert {
+    font-size: 14px;
+    padding: 12px;
+    border-radius: 8px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Flash Message Fade Effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Success Alert */
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+/* Error Alert */
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .card {
         width: 100%;
     }
 }
 
+/* Content should expand */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* Footer should always stay at bottom */
+.footer {
+    background: #007bff; /* Blue background */
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* Fixed footer only if content is short */
+@media (min-height: 100vh) {
+    .footer {
+        position: relative;
+        bottom: 0;
+    }
+}
+
+/* Improve Task List */
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Completed Tasks */
+.task-item.completed {
+    text-decoration: line-through;
+    background: #d4edda;
+}
+
+/* Checkmark Style */
+.task-item::before {
+    content: "✔️";
+    margin-right: 10px;
+    color: green;
+}
+
+/* Hover Effect */
+.task-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Dashboard Styling */
+.dashboard-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+/* Dashboard Styling */
+.dashboard-container {
+    width: 100%;  /* Increase width */
+    height: 100vh; /* Increase height */
+    max-width: 1200px;  /* Prevent it from being too wide */
+    background: white;
+    padding: 30px;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Responsive Dashboard */
+@media (max-width: 1024px) {
+    .dashboard-container {
+        width: 95%;
+        height: auto;
+        padding: 20px;
+    }
+}
+
+
+.stat-card {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 30%;
+}
+
+.stat-card.total {
+    background: #007bff;
+    color: white;
+}
+
+.stat-card.completed {
+    background: #28a745;
+    color: white;
+}
+
+.stat-card.pending {
+    background: #dc3545;
+    color: white;
+}
+
+/* Task List */
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.task-item.completed {
+    text-decoration: line-through;
+    background: #d4edda;
+}
+
+.task-item .task-priority {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.priority-high {
+    background: #dc3545;
+    color: white;
+}
+
+.priority-medium {
+    background: #ffc107;
+    color: black;
+}
+
+.priority-low {
+    background: #28a745;
+    color: white;
+}
+
+.due-date.overdue {
+    color: red;
+    font-weight: bold;
+}
+
+/* Task Progress Bar */
+.progress {
+    height: 25px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #ddd;
+}
+
+.progress-bar {
+    transition: width 0.5s ease;
+}
+
+/* Dark Mode General Styles */
+.dark-mode {
+    background-color: #121212 !important;
+    color: white !important;
+}
+
+/* Dark Mode for Dashboard */
+.dark-mode .dashboard-container {
+    background-color: #1e1e1e !important;
+    color: white !important;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Fix All Text Color in Dashboard */
+.dark-mode .dashboard-container h1,
+.dark-mode .dashboard-container h2,
+.dark-mode .dashboard-container h3,
+.dark-mode .dashboard-container h4,
+.dark-mode .dashboard-container p,
+.dark-mode .dashboard-container td,
+.dark-mode .dashboard-container th {
+    color: white !important;
+}
+
+/* Fix Tables in Dark Mode */
+.dark-mode table {
+    background-color: #222 !important;
+    color: white !important;
+    border: 1px solid #555 !important;
+}
+
+/* Fix Dashboard Cards */
+.dark-mode .card {
+    background-color: #242424 !important;
+    color: white !important;
+    border: 1px solid #333 !important;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Fix Button Visibility */
+.dark-mode .btn {
+    color: white !important;
+    border: 1px solid white !important;
+}
+
+.dark-mode .btn-primary {
+    background-color: #007bff !important;
+}
+
+.dark-mode .btn-primary:hover {
+    background-color: #0056b3 !important;
+}
+
+/* Fix Task List Items */
+.dark-mode .task-item {
+    background: #333 !important;
+    color: white !important;
+    border: 1px solid #444 !important;
+}
+
+/* Fix Flash Messages */
+.dark-mode .alert {
+    background-color: #222 !important;
+    color: #ffcc00 !important;
+    border: 1px solid #ffcc00 !important;
+}
+
+/* Fix Table Borders in Dark Mode */
+.dark-mode table,
+.dark-mode th,
+.dark-mode td {
+    border: 1px solid #444 !important;
+}
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+    .dashboard-container {
+        width: 100%;
+    }
+}
+
+/* Style for authentication forms (Login & Register) */
+.auth-container {
+    margin-top: 10px; /* Adjust to move it closer */
+    padding: 10px;
+    width: 350px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure alignment on smaller screens */
+@media (max-width: 768px) {
+    .auth-container {
+        width: 90%;
+        margin-top: 30px;
+    }
+}
